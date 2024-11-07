@@ -31,4 +31,4 @@ jobs:
         run: npm install --global surge
         
       - name: Deploying on Surge
-        run: sudo surge ./build xhttps://xeereactapp.surge.sh/
+        run: sudo surge ./build https://xeereactapp.surge.sh/
