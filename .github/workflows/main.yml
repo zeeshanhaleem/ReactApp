@@ -13,12 +13,10 @@ jobs:
         with:
             node-version: 12
       -name: install yarn
-      run:  sudo apt update && sudo apt install yarn
+       run:  sudo apt update && sudo apt install yarn
       - name: Creating Build
         run: yarn build
-         
       - name: installing surge
         run: npm install --global surge
-        
       - name: Deploying on Surge
         run: sudo surge ./build https://xeereactapp.surge.sh/ ${{secrets.SURGE_TOKEN}}
