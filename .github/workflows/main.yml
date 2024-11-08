@@ -5,15 +5,15 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Deploying to surge
+    
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v-2
       - name: Install Node.js
-        uses: actions/setup-nodes@v4.0.1
+        uses: actions/setup-nodes@v1.4.2
         with:
-            node-version: 12
+          node-version: 2
       -name: install yarn
-       run:  sudo apt update && sudo apt install yarn
+        run:  Borales/actions-yarn@2.1.0
       - name: Creating Build
         run: yarn build
       - name: installing surge
