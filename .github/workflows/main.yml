@@ -1,22 +1,34 @@
-name: Deploy Website
-
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
-
 jobs:
-  build:
-    runs-on: macOS
-    
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v-2
-      - name: Install Node.js
-        uses: actions/setup-nodes@v1.4.2
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v4
+    
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.1.0
         with:
-          node-version: 2
-      -name: install yarn
-        run:  Borales/actions-yarn@2.1.0
+             version: 2
+      
+      - name: GitHub Action for Yarn
+  # You may pin to the exact commit or the version.
+  # uses: Borales/actions-yarn@3766bb1335b98fb13c60eaf358fe20811b730a88
+        uses: Borales/actions-yarn@v5.0.0
+        with:
+    # Yarn command
+          cmd: install
+          
       - name: Creating Build
         run: yarn build
+         
       - name: installing surge
         run: npm install --global surge
+        
       - name: Deploying on Surge
-        run: sudo surge ./build https://xeereactapp.surge.sh/ ${{secrets.SURGE_TOKEN}}
+        run: sudo surge ./build https://xeereactapp.surge.sh/
