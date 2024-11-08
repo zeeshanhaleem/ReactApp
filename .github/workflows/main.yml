@@ -10,7 +10,6 @@ jobs:
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code
         uses: actions/checkout@v4
-    https://xeereactapp.surge.sh/
       - name: Setup Node.js environment
         uses: actions/setup-node@v4.1.0
         with:
@@ -31,4 +30,4 @@ jobs:
         run: npm install --global surge
         
       - name: Deploying on Surge
-        run: sudo surge ./build https://irumreact.surge.sh/
+        run: sudo surge ./build https://irumreact.surge.sh/ ${{secrets.SURGE_TOKEN}}
