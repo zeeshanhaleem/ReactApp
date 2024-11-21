@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Covid19App
+name: Jobswebsite
 
 # Controls when the action will run. 
 on:
